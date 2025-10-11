@@ -7,9 +7,13 @@ SRC_URI 		= "git://github.com/EyitopeIO/spp.git;branch=main;protocol=https"
 SRCREV			= "0937edbf84408efe9b4989290816688278d783e8"
 S 			= "${WORKDIR}/git"
 
+DEPENDS = "googletest"
+
 inherit cmake
 
 do_install() {
-	install -m 0755 ${B}/spp ${D}${bindir}
+	install -d ${D}/${bindir}
+	install -m 0755 ${B}/spp ${D}/${bindir}
 }
 
+BBCLASSEXTEND =+ "native"
